@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Metadata Rules
 
-## Getting Started
+- Both layout.js and page.js files can export metadata. If defined in a layout, it applies to all pages in that layout, but if defined in a page, it applies only to that page. Metadate is read in order, from the root level down to the final page level
 
-First, run the development server:
+## Templates
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Templates are similar to layouts in that they wrap each child layout or page
+- But, with templates, when a user navigates between routes that share a template, a new instance of the component is mounted. DOM elements are recreated, state is not preserved, and effects are re-synchronized.
+- A template can be defined by exporting a default React Component from a template.js or template.tsx file
+- Similar to layout, templated also should accept a children prop which will render the nested segments in the route
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Page rendering flow
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- page.js -> template.js -> layout.js
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Special Files
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- page.js
+- layout.js
+- template.js
+- error.js
+- not-found.js
+- loading.js
